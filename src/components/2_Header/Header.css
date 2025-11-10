@@ -1,0 +1,109 @@
+/* -Шапка- */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: rgba(36, 24, 53, 0.7);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    transition: all 0.3s ease;
+}
+
+.topbar.scrolled {
+    background: rgba(36, 24, 53, 0.85);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.topbar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(138, 43, 226, 0.05) 0%, 
+        rgba(217, 75, 255, 0.02) 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.topbar.scrolled::before {
+    opacity: 1;
+}
+
+.topbar__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.topbar__logo {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* -Burger- */
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #140b22;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    color: var(--text);
+}
+
+.icon-burger,
+.icon-close {
+    position: relative;
+    width: 18px;
+    height: 12px;
+    display: inline-block
+}
+
+.icon-burger::before,
+.icon-burger::after,
+.icon-close::before,
+.icon-close::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: .2s ease;
+}
+
+.icon-burger::before {
+    top: 0;
+}
+
+.icon-burger::after {
+    bottom: 0;
+    box-shadow: 0 -5px 0 var(--text);
+}
+
+.icon-close::before {
+    top: 5px;
+    transform: rotate(45deg);
+}
+
+.icon-close::after {
+    top: 5px;
+    transform: rotate(-45deg);
+}
