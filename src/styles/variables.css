@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Marck+Script&family=Oswald:wght@200..700&family=Pangolin&family=WDXL+Lubrifont+SC&display=swap');
+
 :root {
     --bg-1: #8a2be2;
     --bg-2: #d94bff;
@@ -15,3 +17,4 @@
     --black: hsl(0, 0%, 0%);
     --white: hsl(0, 0%, 100%);
 }
+
