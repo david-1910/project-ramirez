@@ -1,3 +1,5 @@
+import './Sidebar.css';
+
 export default function Sidebar() {
     return (
         <aside id="sidebar" className="sidebar" aria-label="Сайдбар навигации">
