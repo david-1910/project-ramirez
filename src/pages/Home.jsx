@@ -1,4 +1,4 @@
-import Sidebar from "../components/1_Sidebar/Sidebar";
+// import Sidebar from "../components/1_Sidebar/Sidebar";
 import Header from "../components/2_Header/Header";
 import Intro from "../components/3_Intro/Intro";
 import Skills from "../components/4_Skills/Skills";
@@ -9,7 +9,7 @@ import Footer from "../components/7_Footer/Footer";
 export default function Home() {
     return (
         <>
-            <Sidebar />
+            {/* <Sidebar /> */}
             <Header />
             <main>
                 <Intro />

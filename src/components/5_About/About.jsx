@@ -3,20 +3,20 @@ import './About.css';
 export default function About() {
     return (
         <>
-            <section class="about">
-                <div class="container">
-                    <h2 class="about__title font-3">Обо мне</h2>
-                    <p class="about__subtitle">Frontend & Backend разработчик с страстью к созданию красивых интерфейсов</p>
+            <section className="about">
+                <div className="container">
+                    <h2 className="about__title font-3">Обо мне</h2>
+                    <p className="about__subtitle">Frontend & Backend разработчик с страстью к созданию красивых интерфейсов</p>
 
-                    <div class="about__content">
-                        <div class="about__image-wrapper">
-                            <div class="about__image-bg"></div>
-                            <div class="about__image">
+                    <div className="about__content">
+                        <div className="about__image-wrapper">
+                            <div className="about__image-bg"></div>
+                            <div className="about__image">
                                 <img src="./img/profile.jpg" alt="Ramzes - Frontend Developer" draggable="false"></img>
                             </div>
                         </div>
 
-                        <div class="about__text">
+                        <div className="about__text">
                             <p>
                                 Привет! Я <strong>Довуд</strong> — веб-разработчик с опытом создания современных и
                                 функциональных веб-приложений.
@@ -35,22 +35,22 @@ export default function About() {
                         </div>
                     </div>
 
-                    <div class="about__stats">
-                        <div class="stat-card">
-                            <div class="stat-card__number">1.5+</div>
-                            <div class="stat-card__label">Лет опыта</div>
+                    <div className="about__stats">
+                        <div className="stat-card">
+                            <div className="stat-card__number">1.5+</div>
+                            <div className="stat-card__label">Лет опыта</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-card__number">25+</div>
-                            <div class="stat-card__label">Проектов завершено</div>
+                        <div className="stat-card">
+                            <div className="stat-card__number">25+</div>
+                            <div className="stat-card__label">Проектов завершено</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-card__number">15+</div>
-                            <div class="stat-card__label">Довольных клиентов</div>
+                        <div className="stat-card">
+                            <div className="stat-card__number">15+</div>
+                            <div className="stat-card__label">Довольных клиентов</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-card__number">100%</div>
-                            <div class="stat-card__label">Качество кода</div>
+                        <div className="stat-card">
+                            <div className="stat-card__number">100%</div>
+                            <div className="stat-card__label">Качество кода</div>
                         </div>
                     </div>
                 </div>
