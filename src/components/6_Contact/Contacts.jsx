@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import './Contacts.css';
 import telegram from "../../assets/social-logo/telegram.svg";
 import whatsapp from "../../assets/social-logo/whatsapp.svg";
@@ -14,7 +15,6 @@ export default function Contacts() {
         e.preventDefault();
 
         const form = formRef.current;
-        const formMessage = messageRef.current;
         const submitBtn = form.querySelector('button[type="submit"]');
         const btnText = btnTextRef.current;
 
@@ -43,8 +43,7 @@ export default function Contacts() {
 
 💬 Сообщение:
 ${formData.message}
-        `;
-
+            `;
             const telegramUrl = `https://t.me/tg_dovud_ty?text=${encodeURIComponent(telegramMessage)}`;
             window.open(telegramUrl, "_blank");
 
@@ -55,7 +54,7 @@ ${formData.message}
             submitBtn.disabled = false;
 
             setTimeout(() => {
-                formMessage.style.display = "none";
+                messageRef.current.style.display = "none";
             }, 5000);
         }, 1000);
     };
@@ -67,122 +66,153 @@ ${formData.message}
         el.style.display = "block";
     };
 
+    // Framer Motion Variants
+    const containerVariants = {
+        hidden: {},
+        show: {
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    };
+
+    const fadeUpVariants = {
+        hidden: { opacity: 0, y: 30 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    };
+
     return (
-        <>
-            <section id="contact" className="contact">
-                <div className="container">
-                    <h2 className="contact__title font-3">Свяжитесь со мной</h2>
-                    <p className="contact__subtitle">Готов обсудить ваш проект или ответить на любые вопросы</p>
+        <section id="contact" className="contact">
+            <div className="container">
+                <motion.h2
+                    className="contact__title font-3"
+                    initial="hidden"
+                    whileInView="show"
+                    variants={fadeUpVariants}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    Давайте работать вместе!
+                </motion.h2>
 
-                    <div className="contact__content">
-                        <div className="contact__info">
-                            <div className="contact__info-header">
-                                <h3 className="font-3">Давайте работать вместе!</h3>
-                                <p>Я всегда открыт для новых проектов и интересных предложений. Свяжитесь со мной удобным
-                                    для вас способом.</p>
-                            </div>
+                <motion.p
+                    className="contact__subtitle"
+                    initial="hidden"
+                    whileInView="show"
+                    variants={fadeUpVariants}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    Готов обсудить ваш проект или ответить на любые вопросы
+                </motion.p>
 
-                            <div className="contact__methods">
-                                <a href="https://t.me/tg_dovud_ty" target="_blank"
-                                    className="contact-card contact-card--telegram">
-                                    <div className="contact-card__icon">
-                                        <img src={telegram} alt="Telegram" />
-                                    </div>
-                                    <div className="contact-card__content">
-                                        <h4>Telegram</h4>
-                                        <p>@tg_dovud_ty</p>
-                                        <span className="contact-card__badge">Быстрый ответ</span>
-                                    </div>
-                                    <div className="contact-card__arrow">→</div>
-                                </a>
-
-                                <a href="https://wa.me/+998932501906" target="_blank"
-                                    className="contact-card contact-card--whatsapp">
-                                    <div className="contact-card__icon">
-                                        <img src={whatsapp} alt="WhatsApp"></img>
-                                    </div>
-                                    <div className="contact-card__content">
-                                        <h4>WhatsApp</h4>
-                                        <p>+998 93 250 19 06</p>
-                                        <span className="contact-card__badge">24/7</span>
-                                    </div>
-                                    <div className="contact-card__arrow">→</div>
-                                </a>
-
-                                <a href="https://github.com/david-1910" target="_blank"
-                                    className="contact-card contact-card--github">
-                                    <div className="contact-card__icon">
-                                        <img src={github} alt="GitHub"></img>
-                                    </div>
-                                    <div className="contact-card__content">
-                                        <h4>GitHub</h4>
-                                        <p>david-1910</p>
-                                        <span className="contact-card__badge">Мои проекты</span>
-                                    </div>
-                                    <div className="contact-card__arrow">→</div>
-                                </a>
-
-                                <a href="https://www.instagram.com/inst_dovud_ty/" target="_blank"
-                                    className="contact-card contact-card--instagram">
-                                    <div className="contact-card__icon">
-                                        <img src={instagram} alt="Instagram"></img>
-                                    </div>
-                                    <div className="contact-card__content">
-                                        <h4>Instagram</h4>
-                                        <p>@inst_dovud_ty</p>
-                                        <span className="contact-card__badge">Подписаться</span>
-                                    </div>
-                                    <div className="contact-card__arrow">→</div>
-                                </a>
-                            </div>
-
-                            <div className="contact__availability">
-                                <div className="availability-indicator">
-                                    <span className="availability-dot"></span>
-                                    <span className="availability-text">Доступен для новых проектов</span>
-                                </div>
+                <motion.div
+                    className="contact__content"
+                    initial="hidden"
+                    whileInView="show"
+                    variants={containerVariants}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    <motion.div className="contact__info" variants={fadeUpVariants}>
+                        <div className="contact__availability">
+                            <div className="availability-indicator">
+                                <span className="availability-dot"></span>
+                                <span className="availability-text">Доступен для новых проектов</span>
                             </div>
                         </div>
 
-                        <div className="contact__form-wrapper">
-                            <form className="contact__form" ref={formRef} onSubmit={handleSubmit}>
-                                <div className="form-group">
-                                    <label htmlFor="name">Ваше имя</label>
-                                    <input type="text" id="name" name="name" placeholder="Как вас зовут?" required />
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="email">Email или Telegram</label>
-                                    <input type="text" id="email" name="email" placeholder="example@mail.com или @username" required />
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="subject">Тема обращения</label>
-                                    <select id="subject" name="subject" required>
-                                        <option value="">Выберите тему</option>
-                                        <option value="project">Новый проект</option>
-                                        <option value="collaboration">Сотрудничество</option>
-                                        <option value="question">Вопрос</option>
-                                        <option value="other">Другое</option>
-                                    </select>
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="message">Сообщение</label>
-                                    <textarea id="message" name="message" rows="5" placeholder="Расскажите о вашем проекте..." required />
-                                </div>
-
-                                <button type="submit" className="btn btn--primary">
-                                    <span className="btn-text" ref={btnTextRef}>Отправить сообщение</span>
-                                    <span className="btn-icon">✉️</span>
-                                </button>
-
-                                <div className="form-message" ref={messageRef}></div>
-                            </form>
+                        <div className="contact__methods">
+                            {[
+                                {
+                                    href: "https://t.me/tg_dovud_ty",
+                                    icon: telegram,
+                                    name: "Telegram",
+                                    info: "@tg_dovud_ty",
+                                    badge: "Быстрый ответ",
+                                    className: "contact-card--telegram"
+                                },
+                                {
+                                    href: "https://wa.me/+998932501906",
+                                    icon: whatsapp,
+                                    name: "WhatsApp",
+                                    info: "+998 93 250 19 06",
+                                    badge: "24/7",
+                                    className: "contact-card--whatsapp"
+                                },
+                                {
+                                    href: "https://github.com/david-1910",
+                                    icon: github,
+                                    name: "GitHub",
+                                    info: "david-1910",
+                                    badge: "Мои проекты",
+                                    className: "contact-card--github"
+                                },
+                                {
+                                    href: "https://www.instagram.com/inst_dovud_ty/",
+                                    icon: instagram,
+                                    name: "Instagram",
+                                    info: "@inst_dovud_ty",
+                                    badge: "Подписаться",
+                                    className: "contact-card--instagram"
+                                }
+                            ].map((item, i) => (
+                                <motion.a
+                                    key={i}
+                                    href={item.href}
+                                    target="_blank"
+                                    className={`contact-card ${item.className}`}
+                                    variants={fadeUpVariants}
+                                >
+                                    <div className="contact-card__icon">
+                                        <img src={item.icon} alt={item.name} />
+                                    </div>
+                                    <div className="contact-card__content">
+                                        <h4>{item.name}</h4>
+                                        <p>{item.info}</p>
+                                        <span className="contact-card__badge">{item.badge}</span>
+                                    </div>
+                                    <div className="contact-card__arrow">→</div>
+                                </motion.a>
+                            ))}
                         </div>
-                    </div>
-                </div>
-            </section>
-        </>
+                    </motion.div>
+
+                    <motion.div className="contact__form-wrapper" variants={fadeUpVariants}>
+                        <form className="contact__form" ref={formRef} onSubmit={handleSubmit}>
+                            <div className="form-group">
+                                <label htmlFor="name">Ваше имя</label>
+                                <input type="text" id="name" name="name" placeholder="Как вас зовут?" required />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="email">Email или Telegram</label>
+                                <input type="text" id="email" name="email" placeholder="example@mail.com или @username" required />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="subject">Тема обращения</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Выберите тему</option>
+                                    <option value="project">Новый проект</option>
+                                    <option value="collaboration">Сотрудничество</option>
+                                    <option value="question">Вопрос</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="message">Сообщение</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Расскажите о вашем проекте..." required />
+                            </div>
+
+                            <button type="submit" className="btn btn--primary">
+                                <span className="btn-text" ref={btnTextRef}>Отправить сообщение</span>
+                                <span className="btn-icon">✉️</span>
+                            </button>
+
+                            <div className="form-message" ref={messageRef}></div>
+                        </form>
+                    </motion.div>
+                </motion.div>
+            </div>
+        </section>
     );
 }

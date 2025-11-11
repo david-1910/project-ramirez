@@ -148,10 +148,6 @@ export default function Sidebar({ open, setOpen }) {
 
                 <nav className="sidebar__nav">
                     <a href="/" className="nav-link">Главная</a>
-                    <a href="/skills" className="nav-link">Навыки</a>
-                    <a href="/about" className="nav-link">Обo мне</a>
-                    <a href="/contact" className="nav-link">Контакты</a>
-                    <a href="/portfolio" className="nav-link">Портфолио</a>
                 </nav>
 
                 <div className="sidebar__footer">

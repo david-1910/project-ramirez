@@ -37,19 +37,6 @@
     flex-direction: column;
     gap: 30px;
 }
-
-.contact__info-header h3 {
-    font-size: 32px;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.contact__info-header p {
-    font-size: 16px;
-    color: var(--muted);
-    line-height: 1.6;
-}
-
 .contact__methods {
     display: flex;
     flex-direction: column;
@@ -91,7 +78,9 @@
     transform: scaleY(1);
 }
 
+/* -Иконки- */
 .contact-card__icon {
+    position: relative;
     width: 50px;
     height: 50px;
     display: flex;
@@ -100,15 +89,19 @@
     border-radius: 12px;
     background: var(--border);
     flex-shrink: 0;
-    transition: background .3s ease;
+    transition: background 0.3s ease;
+    overflow: hidden;
 }
 
 .contact-card__icon img {
     width: 28px;
     height: 28px;
     filter: brightness(0) invert(1);
+    position: relative;
+    z-index: 1;
 }
 
+/* Telegram, WhatsApp, GitHub */
 .contact-card--telegram:hover .contact-card__icon {
     background: #229ED9;
 }
@@ -125,10 +118,30 @@
     filter: brightness(0) invert(0);
 }
 
-.contact-card--instagram:hover .contact-card__icon {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+/* Instagram плавный градиент */
+.contact-card--instagram .contact-card__icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(
+        circle at -30% 30%,
+        #feda75 0%,
+        #fa7e1e 25%,
+        #d62976 50%,
+        #962fbf 75%,
+        #4f5bd5 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
 }
 
+.contact-card--instagram:hover .contact-card__icon::before {
+    opacity: 1;
+}
+
+/* Контент карточки */
 .contact-card__content {
     flex: 1;
 }
@@ -166,7 +179,6 @@
 }
 
 .contact__availability {
-    margin-top: 20px;
     padding: 15px 20px;
     background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(217, 75, 255, 0.1));
     border: 1px solid var(--border);
@@ -188,13 +200,13 @@
 }
 
 @keyframes pulse-dot {
-
-    0%,
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    0% {
+        box-shadow: 0 0 0 0 rgba(6, 194, 75, 0.7);
     }
-
     50% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 94, 0.7);
+    }
+    100% {
         box-shadow: 0 0 0 8px rgba(37, 211, 102, 0);
     }
 }
