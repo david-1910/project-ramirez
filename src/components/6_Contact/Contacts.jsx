@@ -1,6 +1,68 @@
+import { useRef } from "react";
 import './Contacts.css';
 
 export default function Contacts() {
+    const formRef = useRef(null);
+    const messageRef = useRef(null);
+    const btnTextRef = useRef(null);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const form = formRef.current;
+        const formMessage = messageRef.current;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const btnText = btnTextRef.current;
+
+        const formData = {
+            name: form.name.value,
+            email: form.email.value,
+            subject: form.subject.value,
+            message: form.message.value,
+        };
+
+        if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+            showMessage("Пожалуйста, заполните все поля!", "error");
+            return;
+        }
+
+        btnText.textContent = "Отправка...";
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            const telegramMessage = `
+🔔 Новое сообщение с сайта!
+
+👤 Имя: ${formData.name}
+📧 Контакт: ${formData.email}
+📋 Тема: ${formData.subject}
+
+💬 Сообщение:
+${formData.message}
+      `;
+
+            const telegramUrl = `https://t.me/tg_dovud_ty?text=${encodeURIComponent(telegramMessage)}`;
+            window.open(telegramUrl, "_blank");
+
+            showMessage("Сообщение готово к отправке! Отправьте его в Telegram.", "success");
+
+            form.reset();
+            btnText.textContent = "Отправить сообщение";
+            submitBtn.disabled = false;
+
+            setTimeout(() => {
+                formMessage.style.display = "none";
+            }, 5000);
+        }, 1000);
+    };
+
+    const showMessage = (text, type) => {
+        const el = messageRef.current;
+        el.textContent = text;
+        el.className = "form-message " + type;
+        el.style.display = "block";
+    };
+
     return (
         <>
             <section id="contact" className="contact">
@@ -11,7 +73,7 @@ export default function Contacts() {
                     <div className="contact__content">
                         <div className="contact__info">
                             <div className="contact__info-header">
-                                <h3 className="font-3">Давайте поработаем вместе!</h3>
+                                <h3 className="font-3">Давайте работать вместе!</h3>
                                 <p>Я всегда открыт для новых проектов и интересных предложений. Свяжитесь со мной удобным
                                     для вас способом.</p>
                             </div>
@@ -20,7 +82,7 @@ export default function Contacts() {
                                 <a href="https://t.me/tg_dovud_ty" target="_blank"
                                     className="contact-card contact-card--telegram">
                                     <div className="contact-card__icon">
-                                        <input src="./img/social-logo/telegram-svgrepo-com.svg" alt="Telegram"></input>
+                                        <img src="./img/social-logo/telegram-svgrepo-com.svg" alt="Telegram"/>
                                     </div>
                                     <div className="contact-card__content">
                                         <h4>Telegram</h4>
@@ -78,17 +140,16 @@ export default function Contacts() {
                             </div>
                         </div>
 
-                        <div className="contact__form-wrapper" id="contact">
-                            <form className="contact__form" id="contactForm">
+                        <div className="contact__form-wrapper">
+                            <form className="contact__form" ref={formRef} onSubmit={handleSubmit}>
                                 <div className="form-group">
                                     <label htmlFor="name">Ваше имя</label>
-                                    <input type="text" id="name" name="name" placeholder="Как вас зовут?" required></input>
+                                    <input type="text" id="name" name="name" placeholder="Как вас зовут?" required />
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="email">Email или Telegram</label>
-                                    <input type="text" id="email" name="email" placeholder="example@mail.com или @username"
-                                        required></input> 
+                                    <input type="text" id="email" name="email" placeholder="example@mail.com или @username" required />
                                 </div>
 
                                 <div className="form-group">
@@ -104,16 +165,15 @@ export default function Contacts() {
 
                                 <div className="form-group">
                                     <label htmlFor="message">Сообщение</label>
-                                    <textarea id="message" name="message" rows="5"
-                                        placeholder="Расскажите о вашем проекте или задайте вопрос..." required></textarea>
+                                    <textarea id="message" name="message" rows="5" placeholder="Расскажите о вашем проекте..." required />
                                 </div>
 
                                 <button type="submit" className="btn btn--primary">
-                                    <span className="btn-text">Отправить сообщение</span>
+                                    <span className="btn-text" ref={btnTextRef}>Отправить сообщение</span>
                                     <span className="btn-icon">✉️</span>
                                 </button>
 
-                                <div className="form-message" id="formMessage"></div>
+                                <div className="form-message" ref={messageRef}></div>
                             </form>
                         </div>
                     </div>
