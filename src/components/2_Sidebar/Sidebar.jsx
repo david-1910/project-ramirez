@@ -1,5 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Sidebar.css";
+import logo from "../../assets/main-logo/logo.png";
+import telegram from "../../assets/social-logo/telegram.svg";
+import whatsapp from "../../assets/social-logo/whatsapp.svg";
+import github from "../../assets/social-logo/github.svg";
+import instagram from "../../assets/social-logo/instagram.svg";
 
 export default function Sidebar({ open, setOpen }) {
     const sidebarRef = useRef(null);
@@ -125,7 +130,7 @@ export default function Sidebar({ open, setOpen }) {
                         <img
                             draggable="false"
                             title="RAMSES - The Coder"
-                            src="/img/logo.png"
+                            src={logo}
                             alt="Логотип"
                             className="brand__logo"
                         />
@@ -150,7 +155,19 @@ export default function Sidebar({ open, setOpen }) {
                 </nav>
 
                 <div className="sidebar__footer">
-                    {/* соцсети */}
+                    <a title="Telegram" target="_blank" href="https://t.me/tg_dovud_ty" class="btn btn--circle btn--glow-tg">
+                        <img src={telegram} alt="Telegram"/>
+                    </a>
+                    <a title="WhatsApp" target="_blank" href="https://wa.me/+998932501906" class="btn btn--circle btn--glow-wp">
+                        <img src={whatsapp} alt="WhatsApp"/>
+                    </a>
+                    <a title="Instagram" target="_blank" href="https://www.instagram.com/inst_dovud_ty/"
+                        class="btn btn--circle btn--glow-inst">
+                        <img src={instagram} alt="Instagram"/>
+                    </a>
+                    <a title="GitHub" target="_blank" href="https://github.com/david-1910" class="btn btn--circle btn--glow-gt">
+                        <img src={github} alt="GitHub"/>
+                    </a>
                 </div>
             </aside>
             <div

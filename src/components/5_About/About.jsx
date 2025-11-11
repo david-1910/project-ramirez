@@ -1,4 +1,5 @@
 import './About.css';
+import profile from "../../assets/main-logo/profile.jpg";
 
 export default function About() {
     return (
@@ -12,7 +13,7 @@ export default function About() {
                         <div className="about__image-wrapper">
                             <div className="about__image-bg"></div>
                             <div className="about__image">
-                                <img src="./img/profile.jpg" alt="Ramzes - Frontend Developer" draggable="false"></img>
+                                <img src={profile} alt="Ramzes - Frontend Developer" draggable="false"></img>
                             </div>
                         </div>
 

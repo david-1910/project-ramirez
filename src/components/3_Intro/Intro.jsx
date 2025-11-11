@@ -114,7 +114,7 @@ export default function Intro() {
             <div className="container">
                 <div className="intro__inner">
                     <h1 className="intro__title font-3">
-                        Привет, я Ramzes <span className="wave">👋</span>
+                        Привет, я Ramirez <span className="wave">👋</span>
                     </h1>
                     <p className="intro__subtitle font-5" ref={containerRef}>
                         <span className="intro__typed" ref={typedRef} aria-live="polite"></span>

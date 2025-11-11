@@ -1,4 +1,5 @@
 import './Footer.css';
+import logo from "../../assets/main-logo/logo.png";
 
 export default function Footer() {
     return (
@@ -8,7 +9,7 @@ export default function Footer() {
                     <div className="contact__footer">
                         <div className="footer-content">
                             <div className="footer-brand">
-                                <img src="./img/logo.png" alt="RAMSES Logo" className="footer-logo"></img>
+                                <img src={logo} alt="RAMSES Logo" className="footer-logo"></img>
                                     <p>Frontend & Backend разработчик</p>
                             </div>
                             <div className="footer-links">
@@ -29,7 +30,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <div className="footer-bottom">
-                            <p>&copy; <span id="year">2025</span> RAMSES. Все права защищены.</p>
+                            <p>&copy; <span id="year">2025</span> RAMIREZ. Все права защищены.</p>
                         </div>
                     </div>
                 </div>

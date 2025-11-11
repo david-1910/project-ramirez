@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./Header.css";
+import logo from "../../assets/main-logo/logo.png";
 
 export default function Header({ setOpen }) {
     const topbarRef = useRef(null);
@@ -52,7 +53,7 @@ export default function Header({ setOpen }) {
             <div className="topbar__brand">
                 <img
                     title="RAMIREZ - The Coder"
-                    src="/img/logo.png"
+                    src={logo}
                     alt=""
                     draggable="false"
                     className="topbar__logo"

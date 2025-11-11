@@ -1,5 +1,9 @@
 import { useRef } from "react";
 import './Contacts.css';
+import telegram from "../../assets/social-logo/telegram.svg";
+import whatsapp from "../../assets/social-logo/whatsapp.svg";
+import github from "../../assets/social-logo/github.svg";
+import instagram from "../../assets/social-logo/instagram.svg";
 
 export default function Contacts() {
     const formRef = useRef(null);
@@ -39,7 +43,7 @@ export default function Contacts() {
 
 💬 Сообщение:
 ${formData.message}
-      `;
+        `;
 
             const telegramUrl = `https://t.me/tg_dovud_ty?text=${encodeURIComponent(telegramMessage)}`;
             window.open(telegramUrl, "_blank");
@@ -82,7 +86,7 @@ ${formData.message}
                                 <a href="https://t.me/tg_dovud_ty" target="_blank"
                                     className="contact-card contact-card--telegram">
                                     <div className="contact-card__icon">
-                                        <img src="./img/social-logo/telegram-svgrepo-com.svg" alt="Telegram"/>
+                                        <img src={telegram} alt="Telegram" />
                                     </div>
                                     <div className="contact-card__content">
                                         <h4>Telegram</h4>
@@ -95,7 +99,7 @@ ${formData.message}
                                 <a href="https://wa.me/+998932501906" target="_blank"
                                     className="contact-card contact-card--whatsapp">
                                     <div className="contact-card__icon">
-                                        <img src="./img/social-logo/whatsapp-svgrepo-com.svg" alt="WhatsApp"></img>
+                                        <img src={whatsapp} alt="WhatsApp"></img>
                                     </div>
                                     <div className="contact-card__content">
                                         <h4>WhatsApp</h4>
@@ -108,7 +112,7 @@ ${formData.message}
                                 <a href="https://github.com/david-1910" target="_blank"
                                     className="contact-card contact-card--github">
                                     <div className="contact-card__icon">
-                                        <img src="./img/social-logo/github-svgrepo-com.svg" alt="GitHub"></img>
+                                        <img src={github} alt="GitHub"></img>
                                     </div>
                                     <div className="contact-card__content">
                                         <h4>GitHub</h4>
@@ -121,7 +125,7 @@ ${formData.message}
                                 <a href="https://www.instagram.com/inst_dovud_ty/" target="_blank"
                                     className="contact-card contact-card--instagram">
                                     <div className="contact-card__icon">
-                                        <img src="./img/social-logo/instagram-svgrepo-com.svg" alt="Instagram"></img>
+                                        <img src={instagram} alt="Instagram"></img>
                                     </div>
                                     <div className="contact-card__content">
                                         <h4>Instagram</h4>
