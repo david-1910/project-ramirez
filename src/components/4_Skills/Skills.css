@@ -247,3 +247,31 @@
         font-size: 12px;
     }
 }
+
+/* -----------------------
+   Skills: mobile fallback
+   ----------------------- */
+@media (max-width: 767px) {
+
+    /* если IntersectionObserver/whileInView не срабатывает — показываем карточки */
+    .skills__cards,
+    .skills__card,
+    .skills__card-tags {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+    /* гарантируем, что секция над фоном */
+    .skills {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* если фоновые элементы есть — убедимся что они ниже */
+    .intro__gradient,
+    .circles {
+        z-index: -1;
+        pointer-events: none;
+    }
+}

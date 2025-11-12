@@ -30,7 +30,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <div className="footer-bottom">
-                            <p>&copy; <span id="year">2025</span> RAMIREZ. Все права защищены.</p>
+                            <p>&copy; <span id="year">2025</span> <span className="purple">RAMIREZ</span>. Все права защищены.</p>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import github from "../../assets/social-logo/github.svg";
 import instagram from "../../assets/social-logo/instagram.svg";
 
 export default function Sidebar({ open, setOpen }) {
+
     const sidebarRef = useRef(null);
     const scrimRef = useRef(null);
 
@@ -74,21 +75,25 @@ export default function Sidebar({ open, setOpen }) {
         );
 
         if (!openedAtStart.current) {
-            // тянем из-за края
+            // Открываем: свайп слева направо (вправо)
             const translate = Math.min(0, -drawerWidth + x);
             sidebarRef.current.style.transition = "none";
             sidebarRef.current.style.transform = `translateX(${translate}px)`;
             scrimRef.current.classList.add("visible");
             scrimRef.current.style.opacity = Math.max(0, Math.min(1, x / drawerWidth));
         } else {
-            // тянем закрыть
-            const translate = Math.min(0, -(x - startX.current));
-            sidebarRef.current.style.transition = "none";
-            sidebarRef.current.style.transform = `translateX(${translate}px)`;
-            scrimRef.current.style.opacity = Math.max(
-                0,
-                Math.min(1, 1 - (x - startX.current) / drawerWidth)
-            );
+            // Закрываем: свайп справа налево (влево)
+            const deltaX = x - startX.current;
+            // Только если двигаем влево (deltaX отрицательный)
+            if (deltaX <= 0) {
+                const translate = deltaX;
+                sidebarRef.current.style.transition = "none";
+                sidebarRef.current.style.transform = `translateX(${translate}px)`;
+                scrimRef.current.style.opacity = Math.max(
+                    0,
+                    Math.min(1, 1 + deltaX / drawerWidth)
+                );
+            }
         }
         e.preventDefault();
     };
@@ -98,11 +103,22 @@ export default function Sidebar({ open, setOpen }) {
         if (!sidebarRef.current) return;
 
         const rect = sidebarRef.current.getBoundingClientRect();
-        const halfVisible = rect.left >= -(rect.width / 2);
+        const drawerWidth = rect.width || 320;
 
         resetInline();
-        if (halfVisible) openSidebar();
-        else closeSidebar();
+
+        if (!openedAtStart.current) {
+            // Открывали: если прошли больше половины - открыть
+            const halfVisible = rect.left >= -(drawerWidth / 2);
+            if (halfVisible) openSidebar();
+            else closeSidebar();
+        } else {
+            // Закрывали: если ушли влево больше чем на треть - закрыть
+            const threshold = drawerWidth / 3;
+            const movedLeft = -rect.left;
+            if (movedLeft > threshold) closeSidebar();
+            else openSidebar();
+        }
 
         document.removeEventListener("pointermove", onPointerMove);
         document.removeEventListener("touchmove", onPointerMove);
@@ -152,17 +168,17 @@ export default function Sidebar({ open, setOpen }) {
 
                 <div className="sidebar__footer">
                     <a title="Telegram" target="_blank" href="https://t.me/tg_dovud_ty" className="btn btn--circle btn--glow-tg">
-                        <img src={telegram} alt="Telegram"/>
+                        <img src={telegram} alt="Telegram" />
                     </a>
                     <a title="WhatsApp" target="_blank" href="https://wa.me/+998932501906" className="btn btn--circle btn--glow-wp">
-                        <img src={whatsapp} alt="WhatsApp"/>
+                        <img src={whatsapp} alt="WhatsApp" />
                     </a>
                     <a title="Instagram" target="_blank" href="https://www.instagram.com/inst_dovud_ty/"
                         className="btn btn--circle btn--glow-inst">
-                        <img src={instagram} alt="Instagram"/>
+                        <img src={instagram} alt="Instagram" />
                     </a>
                     <a title="GitHub" target="_blank" href="https://github.com/david-1910" className="btn btn--circle btn--glow-gt">
-                        <img src={github} alt="GitHub"/>
+                        <img src={github} alt="GitHub" />
                     </a>
                 </div>
             </aside>

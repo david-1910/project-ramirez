@@ -1,9 +1,10 @@
-import './Skills.css';
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import './Skills.css';
 import html from "../../assets/skills/html.svg";
-import css from "../../assets/skills/css.svg";
+import cssIcon from "../../assets/skills/css.svg";
 import js from "../../assets/skills/js.svg";
-import react from "../../assets/skills/react.svg";
+import reactIcon from "../../assets/skills/react.svg";
 import vue from "../../assets/skills/vue.svg";
 import vite from "../../assets/skills/vite.svg";
 import tailwind from "../../assets/skills/tailwind.svg";
@@ -20,7 +21,7 @@ const skillsData = [
     },
     {
         name: "CSS3",
-        icon: css,
+        icon: cssIcon,
         rating: "4.7",
         stats: [{ value: "15", label: "проектов" }, { value: "2.5", label: "года" }],
         tags: ["Flexbox", "Grid", "📱 Адаптивность", "🧱 Структура", "🧭 Кроссбраузерность", "🔍 Чистота", "🚀 Оптимизация", "Анимации", "💡 Переменные(SCSS)"]
@@ -34,7 +35,7 @@ const skillsData = [
     },
     {
         name: "React",
-        icon: react,
+        icon: reactIcon,
         rating: "4.6",
         stats: [{ value: "3", label: "проектов" }, { value: "4", label: "месяца" }],
         tags: ["🧩 Hooks", "🎨 UI-компоненты", "🧱 Структура", "🧭 useEffect", "📦 Состояние", "⚛️ SPA"]
@@ -76,14 +77,10 @@ const skillsData = [
     }
 ];
 
-// Определяем вариант для карточек с задержкой (stagger)
+// Variants
 const containerVariants = {
     hidden: {},
-    show: {
-        transition: {
-            staggerChildren: 0.15
-        }
-    }
+    show: { transition: { staggerChildren: 0.12 } }
 };
 
 const cardVariants = {
@@ -92,25 +89,54 @@ const cardVariants = {
 };
 
 export default function Skills() {
+    const [isMobile, setIsMobile] = useState(false);
+    const [play, setPlay] = useState(false);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 767);
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, []);
+
+    useEffect(() => {
+        if (isMobile) {
+            // small delay to let layout settle
+            const t = setTimeout(() => setPlay(true), 50);
+            return () => clearTimeout(t);
+        } else {
+            setPlay(false);
+        }
+    }, [isMobile]);
+
     return (
         <section className="skills">
             <div className="container">
                 <div className="skills__inner">
                     <h2 className="skills__title font-3">Мои навыки:</h2>
+
                     <motion.div
                         className="skills__cards"
                         variants={containerVariants}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 0.3 }}
+                        initial={isMobile ? "show" : "hidden"}
+                        animate={play ? "show" : undefined}
+                        whileInView={isMobile ? undefined : "show"}
+                        viewport={{ once: true, amount: 0.25 }}
                     >
                         {skillsData.map((skill, idx) => (
-                            <motion.div className="skills__card" key={idx} variants={cardVariants}>
+                            <motion.div
+                                className="skills__card"
+                                key={idx}
+                                variants={cardVariants}
+                                initial={isMobile ? { opacity: 1, y: 0 } : undefined}
+                                animate={isMobile ? { opacity: 1, y: 0 } : undefined}
+                            >
                                 <div className="skills__card-inner">
                                     <div className="skills__card-header">
                                         <img src={skill.icon} alt={skill.name} />
                                         <h3>{skill.name}</h3>
                                     </div>
+
                                     <div className="skills__card-rating">
                                         <span className="rating-value">{skill.rating}</span>
                                         <div className="stars">
@@ -122,6 +148,7 @@ export default function Skills() {
                                         </div>
                                     </div>
                                 </div>
+
                                 <div className="skills__card-stats">
                                     {skill.stats.map((stat, i) => (
                                         <div className="stat" key={i}>
@@ -130,12 +157,13 @@ export default function Skills() {
                                         </div>
                                     ))}
                                 </div>
+
                                 <motion.div
                                     className="skills__card-tags"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.3 }}
-                                    viewport={{ once: true, amount: 0.3 }}
+                                    initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                                    whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.45, delay: 0.18 }}
+                                    viewport={{ once: true, amount: 0.2 }}
                                 >
                                     {skill.tags.map((tag, i) => (
                                         <span className="tag" key={i}>{tag}</span>

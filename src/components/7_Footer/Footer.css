@@ -60,6 +60,10 @@
     border-top: 1px solid var(--border);
 }
 
+.purple {
+    color: var(--bg-2);
+}
+
 .footer-bottom p {
     color: var(--muted);
     font-size: 14px;
@@ -81,7 +85,13 @@
 
 /* 767 */
 @media (max-width: 767px) {
+    .contact__footer {
+        margin-top: 60px;
+        padding: 40px 0 25px;
+    }
+
     .footer-content {
+        grid-template-columns: 1fr;
         gap: 30px;
         margin-bottom: 30px;
     }
@@ -116,13 +126,28 @@
 
 /* 480 */
 @media (max-width: 480px) {
+
+    /* Footer */
+    .contact__footer {
+        margin-top: 50px;
+        padding: 35px 0 20px;
+    }
+
     .footer-content {
         gap: 25px;
         margin-bottom: 25px;
     }
 
+    .footer-brand {
+        gap: 12px;
+    }
+
     .footer-logo {
         width: 130px;
+    }
+
+    .footer-brand p {
+        font-size: 13px;
     }
 
     .footer-links {
@@ -131,6 +156,7 @@
 
     .footer-column h4 {
         font-size: 14px;
+        margin-bottom: 10px;
     }
 
     .footer-column a {
