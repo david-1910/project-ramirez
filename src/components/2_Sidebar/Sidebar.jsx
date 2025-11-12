@@ -164,6 +164,7 @@ export default function Sidebar({ open, setOpen }) {
 
                 <nav className="sidebar__nav">
                     <a href="/" className="nav-link">Главная</a>
+                    <a href="/feature" className="nav-link">Часы</a>
                 </nav>
 
                 <div className="sidebar__footer">
