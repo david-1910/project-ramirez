@@ -16,7 +16,7 @@
     top: 10%;
     translate: -50% -50%;
     border-radius: 50%;
-    background: linear-gradient(to right, var(--bg-1), var(--bg-2));
+    background: linear-gradient(to bottom, var(--bg-2), var(--bg-4));
     animation: pulse 3s infinite;
     opacity: 0.8;
 }
