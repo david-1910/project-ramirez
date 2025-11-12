@@ -7,21 +7,25 @@ import Skills from "../components/4_Skills/Skills";
 import About from "../components/5_About/About";
 import Contacts from "../components/6_Contact/Contacts";
 import Footer from "../components/7_Footer/Footer";
+import Mouse from "../components/Mousemove/Mouse";
 
 export default function Home() {
     const [open, setOpen] = useState(false);
 
     return (
         <>
-            <Header setOpen={setOpen} />
-            <Sidebar open={open} setOpen={setOpen} />
-            <main>
+            <Mouse />
+            <div className="app-content">
+                <Header setOpen={setOpen} />
+                <Sidebar open={open} setOpen={setOpen} />
                 <Intro />
+                <main>
                     <Skills />
-                <About />
-                <Contacts />
-            </main>
-            <Footer />
+                    <About />
+                    <Contacts />
+                </main>
+                <Footer />
+            </div>
         </>
     );
 }

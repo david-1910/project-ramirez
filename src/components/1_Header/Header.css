@@ -60,11 +60,11 @@
     width: 40px;
     height: 40px;
     border-radius: 12px;
-    border: 1px solid var(--border);
-    background: #140b22;
-    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(76, 42, 132, 0.196);
     cursor: pointer;
     color: var(--text);
+    transition: all 0.3s ease;
 }
 
 .icon-burger,

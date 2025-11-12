@@ -6,8 +6,9 @@
     inset: 0 auto 0 0;
     width: min(320px, 86vw);
     z-index: 50;
-    background: linear-gradient(180deg, #1b0f2b 0%, #100a1a 100%);
-    border-right: 1px solid var(--border);
+    background: rgba(27, 15, 43, 0.7); /* полупрозрачный фон */
+    border-right: 1px solid rgba(255, 255, 255, 0.1); /* чуть прозрачная граница */
+    backdrop-filter: blur(10px); /* размытие заднего фона */
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     display: flex;

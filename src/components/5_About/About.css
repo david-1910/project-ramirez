@@ -40,13 +40,13 @@
 
 .about__image-bg {
     position: absolute;
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
     background: linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
     border-radius: 50%;
     filter: blur(60px);
     opacity: 0.3;
-    animation: pulse 3s ease-in-out infinite;
+    animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -54,19 +54,19 @@
     0%,
     100% {
         transform: scale(1);
-        opacity: 0.3;
+        opacity: .3;
     }
 
     50% {
-        transform: scale(1.1);
-        opacity: 0.5;
+        transform: scale(1.2);
+        opacity: .5;
     }
 }
 
 .about__image {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 380px;
+    height: 380px;
     border-radius: 30px;
     overflow: hidden;
     border: 3px solid var(--border);
@@ -111,14 +111,18 @@
 }
 
 .stat-card {
-    background: linear-gradient(135deg, var(--surface), var(--surface-2));
-    border: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(26, 16, 38, 0.45), rgba(34, 18, 51, 0.45));
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 30px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
 }
 
 .stat-card::before {
