@@ -1,4 +1,3 @@
-
 .intro {
     padding: auto;
     padding-top: 108px;
@@ -68,7 +67,7 @@
 .intro__cursor::before {
     content: '';
     display: block;
-    width: 2px;
+    width: 5px;
     height: 0.95em;
     margin: auto;
     background: var(--bg-2, #d94bff);
@@ -247,4 +246,116 @@
         border-radius: 100%;
     }
 
+}
+
+/* Адаптив */
+
+/* 1024 */
+@media (max-width: 1024px) {
+    .intro {
+        padding-top: 80px;
+    }
+
+    .intro__title {
+        font-size: 52px;
+    }
+
+    .intro__subtitle {
+        font-size: 28px;
+        margin-bottom: 180px;
+    }
+
+    .intro__gradient {
+        background:
+            radial-gradient(800px 350px at 0% 0%, var(--bg-1) 0%, transparent 60%),
+            radial-gradient(700px 300px at 100% 10%, var(--bg-2) 0%, transparent 60%),
+            radial-gradient(1200px 150px at 50% 100%, var(--bg-3) 0%, transparent 60%);
+        filter: saturate(120%) blur(16px);
+    }
+}
+
+/* 767 */
+@media (max-width: 767px) {
+    .intro {
+        padding-top: 60px;
+    }
+
+    .intro__title {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+
+    .intro__subtitle {
+        font-size: 22px;
+        margin-bottom: 120px;
+    }
+
+    .intro__gradient {
+        inset: -8% -8% auto -8%;
+        height: 115%;
+        background:
+            radial-gradient(500px 220px at 0% 0%, var(--bg-1) 0%, transparent 60%),
+            radial-gradient(450px 190px at 100% 10%, var(--bg-2) 0%, transparent 60%),
+            radial-gradient(750px 95px at 50% 100%, var(--bg-3) 0%, transparent 60%);
+        filter: saturate(120%) blur(14px);
+    }
+}
+
+/* 480 */
+@media (max-width: 480px) {
+    .intro {
+        padding-top: 50px;
+    }
+
+    .intro__title {
+        font-size: 28px;
+        line-height: 1.2;
+        margin-bottom: 12px;
+    }
+
+    .intro__subtitle {
+        font-size: 18px;
+        margin-bottom: 100px;
+    }
+
+    .intro__cursor {
+        width: 8px;
+    }
+
+    .intro__gradient {
+        inset: -6% -6% auto -6%;
+        height: 110%;
+        background:
+            radial-gradient(350px 150px at 0% 0%, var(--bg-1) 0%, transparent 60%),
+            radial-gradient(300px 125px at 100% 10%, var(--bg-2) 0%, transparent 60%),
+            radial-gradient(500px 65px at 50% 100%, var(--bg-3) 0%, transparent 60%);
+        filter: saturate(120%) blur(12px);
+    }
+}
+
+/* 360 */
+@media (max-width: 360px) {
+    .intro__title {
+        font-size: 24px;
+    }
+
+    .intro__subtitle {
+        font-size: 16px;
+        margin-bottom: 80px;
+    }
+
+    .intro__gradient {
+        inset: -5% -5% auto -5%;
+        height: 105%;
+        background:
+            radial-gradient(280px 120px at 0% 0%, var(--bg-1) 0%, transparent 60%),
+            radial-gradient(240px 100px at 100% 10%, var(--bg-2) 0%, transparent 60%),
+            radial-gradient(400px 50px at 50% 100%, var(--bg-3) 0%, transparent 60%);
+        filter: saturate(120%) blur(10px);
+    }
+
+    /* если нужно — уменьшаем размеры animated circles в intro */
+    .circles {
+        height: 500px;
+    }
 }

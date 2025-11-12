@@ -107,3 +107,27 @@
     top: 5px;
     transform: rotate(-45deg);
 }
+
+/* Адаптив */
+
+/* 767 */
+@media (max-width: 767px) {
+    .topbar {
+        padding: 12px 15px;
+    }
+
+    .topbar__logo {
+        width: 140px;
+    }
+}
+
+/* 480 */
+@media (max-width: 480px) {
+    .topbar {
+        padding: 10px 12px;
+    }
+
+    .topbar__logo {
+        width: 120px;
+    }
+}

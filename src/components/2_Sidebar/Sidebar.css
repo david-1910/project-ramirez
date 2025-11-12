@@ -188,3 +188,72 @@
     filter:
         drop-shadow(0 0 3px var(--inst)) drop-shadow(0 0 8px var(--inst)) drop-shadow(0 0 14px var(--inst));
 }
+
+/* Адаптив */
+
+/* sidebar.responsive.css */
+
+/* 1024 */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: min(300px, 90vw);
+    }
+}
+
+/* 767 */
+@media (max-width: 767px) {
+    .sidebar {
+        width: min(300px, 90vw);
+    }
+
+    .btn--circle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .btn--circle img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* 480 */
+@media (max-width: 480px) {
+    .sidebar {
+        width: min(280px, 92vw);
+        padding: 14px;
+        gap: 14px;
+    }
+
+    .brand__logo {
+        width: 145px;
+    }
+
+    .sidebar__nav {
+        gap: 5px;
+        padding: 6px 0;
+    }
+
+    .nav-link {
+        padding: 11px 12px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .btn--circle {
+        width: 46px;
+        height: 46px;
+    }
+
+    .btn--circle img {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* 360 */
+@media (max-width: 360px) {
+    .sidebar {
+        width: min(280px, 92vw);
+    }
+}

@@ -151,17 +151,17 @@ export default function Sidebar({ open, setOpen }) {
                 </nav>
 
                 <div className="sidebar__footer">
-                    <a title="Telegram" target="_blank" href="https://t.me/tg_dovud_ty" class="btn btn--circle btn--glow-tg">
+                    <a title="Telegram" target="_blank" href="https://t.me/tg_dovud_ty" className="btn btn--circle btn--glow-tg">
                         <img src={telegram} alt="Telegram"/>
                     </a>
-                    <a title="WhatsApp" target="_blank" href="https://wa.me/+998932501906" class="btn btn--circle btn--glow-wp">
+                    <a title="WhatsApp" target="_blank" href="https://wa.me/+998932501906" className="btn btn--circle btn--glow-wp">
                         <img src={whatsapp} alt="WhatsApp"/>
                     </a>
                     <a title="Instagram" target="_blank" href="https://www.instagram.com/inst_dovud_ty/"
-                        class="btn btn--circle btn--glow-inst">
+                        className="btn btn--circle btn--glow-inst">
                         <img src={instagram} alt="Instagram"/>
                     </a>
-                    <a title="GitHub" target="_blank" href="https://github.com/david-1910" class="btn btn--circle btn--glow-gt">
+                    <a title="GitHub" target="_blank" href="https://github.com/david-1910" className="btn btn--circle btn--glow-gt">
                         <img src={github} alt="GitHub"/>
                     </a>
                 </div>
