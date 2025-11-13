@@ -56,11 +56,11 @@
     top: 50%;
     transform: translateY(-50%);
     height: 1em;
-    rotate: 20deg;
+    rotate: 16deg;
     display: inline-block;
-    width: 10px;
+    width: 8px;
     pointer-events: none;
-    transition: left 0.10s linear;
+    transition: left 0.08s linear;
     opacity: 1;
 }
 
@@ -71,7 +71,7 @@
     height: 0.95em;
     margin: auto;
     background: var(--bg-2, #d94bff);
-    border-radius: 1px;
+    border-radius: 50px;
 }
 
 @keyframes cursorBlink {
@@ -91,7 +91,6 @@
     animation: cursorBlink 1s steps(2, start) infinite;
 }
 
-/* reduced-motion: выключаем анимации */
 @media (prefers-reduced-motion: reduce) {
     .intro__cursor {
         animation: none;
