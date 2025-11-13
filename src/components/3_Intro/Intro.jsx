@@ -125,7 +125,18 @@ export default function Intro() {
             <div className="intro__gradient"></div>
             <ul className="circles">
                 {Array.from({ length: 20 }).map((_, i) => (
-                    <li key={i}></li>
+                    <li key={i} className="shape">
+                        <svg viewBox="0 0 100 100" className="shape-svg" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <linearGradient id={`g-${i}`} x1="0" x2="1">
+                                    <stop offset="0" stopColor="#ff3cac" />
+                                    <stop offset="0.5" stopColor="#8800ffff" />
+                                    <stop offset="1" stopColor="#f242ffff" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="40" fill="none" stroke={`url(#g-${i})`} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </li>
                 ))}
             </ul>
         </section>

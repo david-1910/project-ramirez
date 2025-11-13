@@ -3,6 +3,7 @@
 .about {
     position: relative;
     overflow: hidden;
+    padding: 0 0 40px 0;
 }
 
 .about__title {
